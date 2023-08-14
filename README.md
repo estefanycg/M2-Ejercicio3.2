@@ -1,4 +1,4 @@
-# M2-Ejercicio3.2
+# Ejercicio 3.2
 Ejercicio 3.2 - Programación Móvil II
 
 ## INTEGRANTES
