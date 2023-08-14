@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Ejercicio2Parcial3.ViewModels"
+             x:Class="Ejercicio2Parcial3.Views.ActualizarRegistroAlumno"
+             Title="Actualizar Registro">
+
+    <ContentPage.BindingContext>
+        <viewModels:ActualizarRegistroAlumnoViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <StackLayout Padding="20">
+        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+            <Image Source="{Binding Foto}" WidthRequest="150" HeightRequest="150"/>
+            <StackLayout Orientation="Horizontal" Margin="0,0,0,20" Spacing="10" VerticalOptions="EndAndExpand" HorizontalOptions="Center">
+                <Button Text="Tomar Fotografía" Command="{Binding TomarFotoCommand}" BackgroundColor="#6AB04C" CornerRadius="10" WidthRequest="170"/>
+                <Button Text="Ver Imagen" Command="{Binding VerImagenCommand}" BackgroundColor="#6AB04C" CornerRadius="10" WidthRequest="170" />
+            </StackLayout>
+        </StackLayout>
+
+        <Label Text="Nombres del Alumno" />
+        <Entry Text="{Binding Nombres}" />
+
+        <Label Text="Apellidos del Alumno" />
+        <Entry Text="{Binding Apellidos}" />
+
+        <Label Text="Sexo" />
+        <Picker Title="Seleccione sexo" SelectedItem="{Binding Sexo}">
+            <Picker.Items>
+                <x:String>Femenino</x:String>
+                <x:String>Masculino</x:String>
+            </Picker.Items>
+        </Picker>
+
+        <Label Text="Dirección" />
+        <Entry Text="{Binding Direccion}" />
+
+        <StackLayout Orientation="Horizontal" Spacing="10" VerticalOptions="EndAndExpand" HorizontalOptions="Center">
+            <Button Text="Guardar Cambios" WidthRequest = "170" BackgroundColor="#4D85A8" TextColor="White" CornerRadius="10" Command="{Binding GuardarCommand}" />
+            <Button Text="Cancelar" WidthRequest = "170" BackgroundColor="#FF4081" TextColor="White" CornerRadius="10" Command="{Binding CancelarCommand}" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

@@ -1,0 +1,53 @@
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:Ejercicio2Parcial3.ViewModels"
+             x:Class="Ejercicio2Parcial3.Views.ListaRegistrosAlumnos"
+             Title="Lista de Alumnos">
+
+    <ContentPage.BindingContext>
+        <viewModels:ListaRegistrosAlumnosViewModel/>
+    </ContentPage.BindingContext>
+
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Nuevo Registro" Command="{Binding IrANuevoRegistroCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <ListView ItemsSource="{Binding AlumnosCollection}" ItemTapped="OnItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell Height="100">
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <Image Source="{Binding Foto}" WidthRequest="150" HeightRequest="150"
+                                Aspect="AspectFit"/>
+                            <Label Text="{Binding Nombres}" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="10" Grid.Row="1">
+            <Button Text="Actualizar Registro" BackgroundColor="#4D85A8" TextColor="White" CornerRadius="10"
+                     Command="{Binding ActualizarRegistroCommand}" HorizontalOptions="FillAndExpand"/>
+            <Button Text="Eliminar" BackgroundColor="#E91E63" TextColor="White" CornerRadius="10" 
+                    Command="{Binding EliminarAlumnoCommand}" 
+                    CommandParameter="{Binding AlumnoSeleccionado}" 
+                    HorizontalOptions="FillAndExpand" />
+
+
+
+
+        </StackLayout>
+
+        <Button Text="Salir de la app" BackgroundColor="#4CAF50" TextColor="White" CornerRadius="10"
+                Command="{Binding SalirCommand}" Margin="10,0,10,20" Grid.Row="2"/>
+    </Grid>
+</ContentPage>
